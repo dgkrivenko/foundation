@@ -1,0 +1,330 @@
+@media screen and (max-width: 1200px) {
+    // ================ Header ==============
+
+    .banner__logo-container {
+        flex-direction: column;
+    }
+
+    .banner__logo-text {
+        margin: 10px auto 0 auto;
+    }
+
+    .banner__logo-img {
+        img {
+            display: block;
+            margin: 0 auto;
+        }
+    }
+
+    // =============== Section news ==============
+
+    .news__title {
+        margin-top: 0;
+    }
+    .main-news__item {
+        .news__text {
+            font-size: 14px;
+        }
+    }
+
+    // =============== FORM PAGE ==============
+
+    .bottom-margin {
+        margin-left: 0;
+    }
+// ================ Section founder ===============
+    .contacts__item {
+        font-size: 14px;
+    }
+} 
+
+@media screen and (max-width: 992px) {
+    // ================ Header ===============
+    
+    .banner__title {
+        font-size: 20px;
+    }
+
+    // =============== Section banner-slider ===============
+
+    .banner-slide__title {
+        font-size: 22px;
+    }
+
+    .banner-slide__date {
+        font-size: 12px;
+    }
+
+    // =============== Section news ===============
+
+    .news__img {
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 30px;
+    }
+
+    .news__title {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .main-news__item {
+        .news__text {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+    #see-more-news {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    // =============== Section partners ===============
+
+    .my-img-fluid {
+        width: 100%;
+        height: auto;
+        min-height: auto;
+    }
+
+    // =============== FORM PAGE ==============
+
+    .top-margin {
+        margin-left: 0;
+    }
+
+    .mt-45 {
+        margin-top: 45px;
+    }
+
+    #send-data {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    // ================ Section product detail ===============
+    #product {
+        p {
+            margin-left: 0;
+            margin-top: 10px;
+            text-align: justify;
+        }
+    }
+
+    #buy-button {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .product__img {
+        margin-bottom: 40px;
+    }
+
+// ================ Section founder ===============
+
+    .founder__img, .director-photo {
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .about-title {
+        text-align: center;
+    }
+    .rm-button {
+        position: static;
+        margin-top: 30px;
+    }
+    .director-name {
+        margin-top: 30px;
+    }
+
+    // =============== Section event-name===============
+
+    .events-description__block {
+        width: 100%;
+    }
+
+    .content-conrainer {
+        width: 100%;
+    }
+
+}
+@media screen and (max-width: 768px) {
+    // ================ Header ===============
+
+    #tablet-header {
+        display: block;
+    }
+
+    #desktop-header {
+        display: none;
+    }
+
+    .logo-img {
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+    // ================ Section banner-slider ===============
+
+    .banner-slide {
+        padding: 10px 18px 20px 18px;
+    }
+
+    .banner-slide__title {
+        font-size: 18px;
+    }
+
+    .slick-dots {
+        width: 60px;
+
+        button {
+            min-width: 5px;
+            min-height: 5px;
+        }
+    }
+
+    // =============== FORM PAGE ==============
+
+
+    .form-item__title, .apply-form__title {
+        text-align: center;
+    }
+
+    #download-files {
+        margin-left: auto;
+    }
+
+    .file-icon {
+        margin-right: auto;
+    }
+
+    // =============== Section event-name ==============
+
+    #event {
+        position: static;
+
+        .container {
+            flex-direction: column;
+        }
+    }
+
+    #buy-ticket {
+        margin-top: 30px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    // ================ Header ===============
+
+    #tablet-header {
+        display: none;
+    }
+
+    #mobile-header {
+        display: block;
+    }
+
+    .menu-button, .mobile-header__logo {
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+    #menu-section {
+        display: none;
+    }
+
+    .menu-button {
+        cursor: pointer;
+    }
+
+    // ================ Section banner-slider ===============
+
+    .banner-slider {
+        margin-top: 50px;
+    }
+    
+    .banner-slide__header {
+        flex-direction: column;
+    }
+
+    .banner-slide__date {
+        margin: 0 auto;
+    }
+
+    // =============== Section news ==============
+    
+    .main-news__item {
+        .news__text {
+            text-align: justify;
+        }
+    }
+
+    // =============== Section partners ===============
+
+    #partners {
+        width: 100% !important;
+    } 
+
+    .partners-slide__row {
+        margin-top: 10px;
+    }
+
+    // =============== See more shop button ===============
+
+    #see-more-goods {
+        display: block;
+        margin-left: auto;  
+        margin-right: auto;
+    }
+    .product__name {
+        margin-top: 50px;
+    }
+
+    // =============== Modal window ===============
+    #buy-modal {
+        width: 350px;
+    }
+}
+
+
+@media screen and (max-width: 576px) { 
+    .event-name {
+        p {
+            font-size: 24px;
+        }
+    }
+    .about-detail__title {
+        margin-top: 30px;
+        font-size: 24px;
+    }
+}
+
+@media screen and (max-width: 500px) { 
+    .about-detail-content {
+        img {
+            float: none !important;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 30px;
+        }
+    }
+}
+@media screen and (max-width: 400px) {
+    #buy-modal {
+        width: 310px;
+    }
+}

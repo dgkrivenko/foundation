@@ -1,0 +1,57 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block desctop_menu%}
+  <section id="menu-section">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-7 ml-auto mr-auto">
+                  <nav class="wow lightSpeedIn">
+                      <ul class="main-menu d-flex justify-content-between align-items-center">
+                          <li>
+                              <a href="{% url 'mainapp:main' %}">Foundation</a>
+                          </li>
+                          <li>
+                              <a href="{% url 'events:main_view' %}">Events</a>
+                          </li>
+                          <li>
+                              <a href="{% url 'apply:apply_view' %}">Apply</a>
+                          </li>
+                          <li class="menu-active">
+                              <a href="{% url 'about:about_main' %}">About</a>
+                          </li>
+                          <li>
+                              <a href="{% url 'shop:list' %}">Shop</a>
+                          </li>
+                          <li>
+                              <a href="{% url 'contacts:contacts_view' %}">Contacts</a>
+                          </li>
+                      </ul>
+                  </nav>
+              </div>
+          </div>
+      </div>
+  </section>
+{% endblock%}
+{% block page_content%}
+      
+    <!--================================================-->
+    <!--    ABOUT DETAIL PAGE: section about-detail     -->
+    <!--================================================-->
+    <section id="about-detail">
+        <div class="container">
+            <h2 class="about-detail__title">{{content.detail_page_title}}</h2>
+            <div class="content-conrainer">
+               <span class="about-detail-content">
+                    {% if is_img %}
+                        <img class="img-fluid" src="../media/{{content.img}}" alt="Photo">
+                    {% endif %}
+                    {% autoescape off %}
+                   {{content.full_description}}
+                   {% endautoescape %}
+               </span>
+               <div class="mb-about"></div>
+            </div>
+        </div>
+
+    </section>
+{% endblock %}

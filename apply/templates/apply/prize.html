@@ -1,0 +1,5 @@
+<div>
+    {% for p in prize.all %}
+        <a href="/admin/apply/prize/{{p.id}}/change">{{p}}</a> <br>
+    {% endfor %}
+</div>

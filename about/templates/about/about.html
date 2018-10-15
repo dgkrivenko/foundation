@@ -1,0 +1,153 @@
+{% extends 'base.html'%}
+{%load static%}
+
+    <!--================================================-->
+    <!--            ABOUT PAGE: Section founder         -->
+    <!--================================================-->
+    {%block desctop_menu %}
+        <!--================================================-->
+        <!--                    Section menu                -->
+        <!--================================================-->
+
+        <section id="menu-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 ml-auto mr-auto">
+                        <nav class="wow lightSpeedIn">
+                            <ul class="main-menu d-flex justify-content-between align-items-center">
+                                <li>
+                                    <a href="{% url 'mainapp:main' %}">Foundation</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'events:main_view' %}">Events</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'apply:apply_view' %}">Apply</a>
+                                </li>
+                                <li class="menu-active">
+                                    <a href="{% url 'about:about_main' %}">About</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'shop:list' %}">Shop</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'contacts:contacts_view' %}">Contacts</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {%endblock%}
+    {% block page_content %}
+    {% for item  in founder%}
+        
+    <section id="founder">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 wow fadeInUpBig">
+                    <h2 class="about-title">Founder</h2>
+                    <div class="founder__img">
+                        <img class="img-fluid" src="media/{{item.img}}" alt="Founder photo">
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInUpBig">
+                    <p class="founder__name">{{item.name}}</p>
+                    <div class="founder__desc about-text">
+                        {% autoescape off %}
+                       {{item.short_description}}
+                       {% endautoescape %}
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <button href='founder/' id="read-more-founder" class="detail-view red-button rm-button wow fadeInDownBig">
+                        Read more
+                        <img class="img-fluid" src="{% static 'img/see-more-arrow.png' %}" alt="">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endfor %}
+
+    <!--================================================-->
+    <!--       ABOUT PAGE: Section about-foundation     -->
+    <!--================================================-->
+    {% for item in foundation %}
+        
+    <section id="about-foundation">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-6 wow fadeInUpBig">
+                    <h2 class="about-title">
+                        About Foundation
+                    </h2>
+                    <div class="about-text">
+                        {% for item in foundation %}
+                            {% autoescape off %}
+                            {{item.short_description}}
+                            {% endautoescape %}
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <button href='foundation/' id="read-more-foundation" class="detail-view red-button rm-button wow fadeInDownBig">
+                        Read more
+                        <img class="img-fluid" src="{% static 'img/see-more-arrow.png' %}" alt="">
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    {% endfor %}
+
+    <!--================================================-->
+    <!--       ABOUT PAGE: Section directors            -->
+    <!--================================================-->
+
+    <section id="directors">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h2 class="about-title">
+                        Board of Directors
+                    </h2>
+                </div>
+            </div>
+            {% for director in directors %}
+                <div class="director-item wow fadeInUpBig">
+                    <div class="row">
+                        <div class="col-lg-2">
+                            <div class="director-photo">
+                                <img class="img-fluid" src="media/{{director.img}}" alt="Director">
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="director-name">
+                                <p>
+                                    {{director.name}} – {{director.status}}
+                                </p>
+                            </div>
+                            <div class="director-info">
+                                {% autoescape off %}
+                                {{director.short_description}}
+                                {% endautoescape %}
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <button href="{% url 'about:about_detail' director.id %}" id="read-more-director" class="red-button rm-button wow fadeInDownBig detail-view">
+                                Read more
+                                <img class="img-fluid" src="{% static 'img/see-more-arrow.png' %}" alt="">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+{% endblock %}

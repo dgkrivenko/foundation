@@ -1,0 +1,26 @@
+<div class="main-news__list">
+    {% for news in news_list %}
+
+    <div class="main-news__item news wow fadeInUp">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="news__img">
+                    <img class="img-fluid" src="media/{{news.img}}" alt="">
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="news__content">
+                    <p class="news__title">
+                        {{news.title}}
+                    </p>
+                    {% autoescape off %}
+                        {{news.description}}
+                    {% endautoescape %}
+                </div>  
+            </div>
+        </div>
+    </div>
+
+    {% endfor%}
+                    
+ </div>

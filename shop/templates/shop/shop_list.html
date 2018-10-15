@@ -1,0 +1,33 @@
+{% load static %}
+<div class="row">
+    {% for item in prod_list%}
+        <div class="col-lg-4 col-sm-6">
+            <a href="{% url 'detail' item.id%}">
+                <div class="goods__item wow fadeInUpBig">
+                    <div class="goods__img">
+                        <img class="img-fluid" src="media/{{item.img}}" alt="Photo">
+                    </div>
+                    <div class="goods__info d-flex justify-content-between">
+                        <div class="goods__description">
+                            <p>
+                                {{item.product_name}}
+                            </p>
+                            <span>
+                                {{item.short_description}}
+                            </span>
+                        </div>
+                        <div class="goods__price">
+                            {{item.price}} &#8364;
+                         </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    {% endfor %}
+</div>
+{% if is_show_more == False %}
+    <div class="margin-block"></div>
+    <script>
+        $('#see-more-goods').addClass('d-none');
+    </script>
+{% endif %}

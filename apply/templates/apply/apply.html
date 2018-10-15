@@ -1,0 +1,223 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block desctop_menu%}
+    <section id="menu-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 ml-auto mr-auto">
+                    <nav class="wow lightSpeedIn">
+                        <ul class="main-menu d-flex justify-content-between align-items-center">
+                            <li>
+                                <a href="{% url 'mainapp:main' %}">Foundation</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'events:main_view' %}">Events</a>
+                            </li>
+                            <li class="menu-active">
+                                <a href="{% url 'apply:apply_view' %}">Apply</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'about:about_main' %}">About</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'shop:list' %}">Shop</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'contacts:contacts_view' %}">Contacts</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endblock%}
+
+{% block page_content%}
+
+    <!--================================================-->
+    <!--        APPLAY PAGE:  Section category-button   -->
+    <!--================================================-->
+
+    <section class="categories wow flipInX">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <button class="category-button d-block ml-auto mr-auto">
+                        Sport
+                    </button>
+                </div>
+                <div class="col-md-4">
+                    <button class="category-button d-block ml-auto mr-auto">
+                        Art
+                    </button>
+                </div>
+                <div class="col-md-4">
+                    <button class="category-button d-block ml-auto mr-auto">
+                        Science
+                    </button>
+                </div>
+            </div>
+        </div>
+        <p class="participant-category"></p>
+    </section>
+
+    <!--================================================-->
+    <!--            APPLAY PAGE:  Section form         -->
+    <!--================================================-->
+
+    <section>
+        <div class="container">
+            <form class="apply-form" enctype="multipart/form-data" method="POST">
+                {% csrf_token %}
+                <input type="text" name="participant-category" class="d-none">
+               <div class="apply-form__top">
+                <p class="apply-form__title">
+                    Participation Form
+                </p>
+                   <div class="row wow fadeInUpBig">
+                       <div class="col-lg-4">
+                           <div id="about-participant" class="apply-form__item form-item">
+                               <p class="form-item__title">Data about the participant</p>
+                               <input type="text" name='participant-name' placeholder="Name">
+                               <p class="warning participant-name"></p>
+                               <input type="text" name='participant-address' placeholder="Address">
+                               <p class="warning participant-address"></p>
+                               <input type="text" name='participant-grade' placeholder="School and grade">
+                               <p class="warning participant-grade"></p>
+                               <input type="tel"  name='participant-phone' placeholder="Phone number">
+                               <p class="warning participant-phone"></p>
+                               <input type="mail" name='participant-mail' placeholder="E-mail">
+                               <p class="warning participant-mail"></p>
+                               <input type="text" name='participant-birth' placeholder="Date of birth">
+                               <p class="warning participant-birth"></p>
+                           </div>
+                       </div>
+                       <div class="col-lg-4 top-margin">
+                           <div id="about-parent" class="apply-form__item form-item">
+                               <p class="form-item__title mt-45">Data about the participant</p>
+                               <input type="text" name="contact-type" placeholder="Contact person">
+                               <p class="warning contact-type"></p>
+                               <input type="text" name="contact-name" placeholder="Name of coach, teacher, trainer, parent">
+                               <p class="warning contact-name"></p>
+                               <input type="tel"  name="contact-phone" placeholder="Phone number">
+                               <p class="warning contact-phone"></p>
+                               <input type="mail" name="contact-mail" placeholder="E-mail">
+                               <p class="warning contact-mail"></p>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+               <div class="apply-form__bottom">
+                <p class="apply-form__title">
+                    Earned prices during the last year
+                </p>
+                <p class="global-warning warning d-none">
+                    Fill in all fields of selected categories, you must select at least one category
+                </p>
+                   <div class="row wow fadeInDownBig">
+                       <div class="col-lg-6 col-xl-5">
+                           <div id="worldwide" class="apply-form__item form-item">
+                                <p class="form-item__title">Worldwide price /up to 10th place/</p>
+                                <input type="text" name="worldwide-countries" placeholder="Number of countries participated">
+                                <p class="warning prize-warning worldwide-countries"></p>
+                                <input type="text" name="worldwide-participants" placeholder="Number of participants">
+                                <p class="warning prize-warning worldwide-participants"></p>
+                                <input type="text" name="worldwide-date" placeholder="Date of the contest">
+                                <p class="warning prize-warning worldwide-date"></p>
+                                <input type="text" name="worldwide-place" placeholder="Place of the contest">
+                                <p class="warning prize-warning worldwide-place"></p>
+                                <input type="text" name="worldwide-prize" placeholder="Kind of the price">
+                                <p class="warning prize-warning worldwide-prize"></p>
+                                <input type="file" name="download-worldwide" class="d-none" multiple>
+                           </div>
+                           <p class="upload-style form-item__title">Upload of the scanned prices</p>
+                           <div class="apply-form__item form-item d-flex">
+                                <button id="download-worldwide" class="download-files d-flex align-items-center justify-content-around">
+                                    Upload
+                                    <div class="download-img">
+                                        <img src="{% static 'img/download-img.png' %}" alt="">
+                                    </div>
+                                </button>
+                                <div class="file-icon">
+                                    <img class="img-fluid" src="{% static 'img/file-icon.png' %}" alt="">
+                                </div>
+                            </div>
+                            <p class="warning prize-warning download-worldwide"></p>
+                            <div class="file-name" data-files="download-worldwide"></div>
+                            <button class="remove-files d-none" data-remove="download-worldwide">Remove files</button>
+                       </div>
+                       <div class="col-lg-6 col-xl-5 form-item-margin bottom-margin">
+                           <div id="european" class="apply-form__item form-item">
+                                <p class="form-item__title mt-45">European price /up to 10th place/</p>
+                                <input type="text" name="european-countries" placeholder="Number of countries participated">
+                                <p class="warning prize-warning european-countries"></p>
+                                <input type="text" name="european-participants" placeholder="Number of participants">
+                                <p class="warning prize-warning european-participants"></p>
+                                <input type="text" name="european-date" placeholder="Date of the contest">
+                                <p class="warning prize-warning european-date"></p>
+                                <input type="text" name="european-place" placeholder="Place of the contest">
+                                <p class="warning prize-warning european-place"></p>
+                                <input type="text" name="european-prize" placeholder="Kind of the price">
+                                <p class="warning prize-warning european-prize"></p>
+                                <input type="file" name="download-european" class="d-none" multiple>
+                           </div>
+                           <p class="upload-style form-item__title">Upload of the scanned prices</p>
+                           <div class="apply-form__item form-item d-flex">
+                                <button id="download-european" class="download-files d-flex align-items-center justify-content-around">
+                                    Upload
+                                    <div class="download-img">
+                                        <img src="{% static 'img/download-img.png' %}" alt="">
+                                    </div>
+                                </button>
+                                <div class="file-icon">
+                                    <img class="img-fluid" src="{% static 'img/file-icon.png' %}" alt="">
+                                </div>
+                            </div>
+                            <p class="warning prize-warning download-european"></p>
+                            <div class="file-name" data-files="download-european"></div>
+                            <button class="remove-files d-none" data-remove="download-european">Remove files</button>
+                       </div>
+                   </div>
+                   <div class="row wow fadeInDownBig">
+                       <div class="col-lg-5 col-xl-5">
+                           <div id="national" class="apply-form__item form-item">
+                               <p class="form-item__title mt-40 mt-45">National or regional price /up to 10th place/</p>
+                                <input type="text" name="national-participants" placeholder="Number of participants">
+                                <p class="warning prize-warning national-participants"></p>
+                                <input type="text" name="national-date" placeholder="Date of the contest">
+                                <p class="warning prize-warning national-date"></p>
+                                <input type="text" name="national-place" placeholder="Place of the contest">
+                                <p class="warning prize-warning national-place"></p>
+                                <input type="text" name="national-prize" placeholder="Kind of the price">
+                                <p class="warning prize-warning national-prize"></p>
+                                <input type="file" name="download-national" class="d-none" multiple>
+                           </div>
+                           <p class="upload-style form-item__title">Upload of the scanned prices</p>
+                           <div class="apply-form__item form-item d-flex">
+                                <button id="download-national" class="download-files d-flex align-items-center justify-content-around">
+                                    Upload
+                                    <div class="download-img">
+                                        <img src="{% static 'img/download-img.png' %}" alt="">
+                                    </div>
+                                </button>
+                                <div class="file-icon">
+                                    <img class="img-fluid" src="{% static 'img/file-icon.png' %}" alt="">
+                                </div>
+                            </div>
+                            <p class="warning prize-warning download-national"></p>
+                            <div class="file-name" data-files="download-national"></div>
+                            <button class="remove-files d-none" data-remove="download-national">Remove files</button>
+                       </div>
+                   </div>
+               </div>
+               <button href="{% url 'apply:apply_view' %}" id="send-data" class="red-button wow fadeInLeft">
+                        Send data
+                </button>
+            </form>
+        </div>
+    </section>
+
+
+{% endblock %}

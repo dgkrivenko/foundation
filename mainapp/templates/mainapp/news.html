@@ -1,0 +1,66 @@
+{% block desctop_menu%}
+<section id="menu-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 ml-auto mr-auto">
+                <nav class="wow lightSpeedIn">
+                    <ul class="main-menu d-flex justify-content-between align-items-center">
+                        <li class="menu-active">
+                            <a href="{% url 'mainapp:main' %}">Foundation</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'events:main_view' %}">Events</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'applay:main_view' %}">Apply</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'about:about_main' %}">About</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'shop:list' %}">Shop</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'contacts:contacts_view' %}">Contacts</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock%}
+
+{%load static%}
+<div class="main-news__list">
+    {% for news in news_list %}
+
+    <div class="main-news__item news wow fadeInUp">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="news__img">
+                    <img class="img-fluid" src="media/{{news.img}}" alt="">
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="news__content">
+                    <span class="news__title">
+                        {{news.title}}
+                    </span>
+                    {% autoescape off %}
+                        {{news.description}}
+                    {% endautoescape %}
+                </div>  
+            </div>
+        </div>
+    </div>
+
+    {% endfor%}
+                    
+ </div>
+{% if is_show_more == False%}
+    <script>
+        $('#see-more-news').addClass('d-none');
+    </script>
+    <div class="margin-block"></div>
+{% endif %}

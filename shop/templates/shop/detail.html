@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_stylesheet %}
+    <link rel="stylesheet" href="{% static 'shop/css/jquery.arcticmodal-0.3.css' %}">
+    <link rel="stylesheet" href="{% static 'shop/css/simple.css' %} ">
+{% endblock%}
+    <!--================================================-->
+    <!--          DETAIL PAGE: Section product          -->
+    <!--================================================-->
+
+{% block desctop_menu%}
+<section id="menu-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 ml-auto mr-auto">
+                <nav class="wow lightSpeedIn">
+                    <ul class="main-menu d-flex justify-content-between align-items-center">
+                        <li>
+                            <a href="{% url 'mainapp:main' %}">Foundation</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'events:main_view' %}">Events</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'apply:apply_view' %}">Apply</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'about:about_main' %}">About</a>
+                        </li>
+                        <li class="menu-active">
+                            <a href="{% url 'shop:list' %}">Shop</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'contacts:contacts_view' %}">Contacts</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock%}
+{% block page_content %}
+
+    <section id="proudct">
+        <div class="container">
+            <h2 class="product__name wow fadeInLeft">{{content.product_name}}</h2>
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="product__img wow fadeInLeft">
+                        <img class="img-fluid" src="media/{{content.img}}" alt="Photo">
+                    </div>
+                </div>
+                <div class="col wow fadeInRight">
+                    {% autoescape off %}
+                        {{content.long_description}}
+                    {% endautoescape  %}
+
+                    <button id="buy-button" class="red-button">
+                        Buy
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div style="display: none;">
+        <div class="box-modal" id="buy-modal">
+            <div class="box-modal_close arcticmodal-close">X</div>
+            <form method="POST" class="buy-form d-flex flex-column">
+                <p class="buy-form__title">Make an order</p>
+                {% csrf_token %}
+                {% for field in form  %}
+                    {{field}}
+                    {% for error in field.errors  %}
+                        <p>{{error}}</p>
+                    {% endfor %}
+                {% endfor %}
+                <button class="buy-product">Buy</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block page_scripts %}
+    <script src="{% static 'shop/js/jquery.arcticmodal-0.3.min.js' %}"></script>
+{% endblock page_scripts %}
+

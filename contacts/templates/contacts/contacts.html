@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+{% load static %}
+
+    <!--================================================-->
+    <!--           CONTACTS PAGE: Section contacnts     -->
+    <!--================================================-->
+{%block desctop_menu %}
+    <!--================================================-->
+    <!--                    Section menu                -->
+    <!--================================================-->
+
+    <section id="menu-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 ml-auto mr-auto">
+                    <nav class="wow lightSpeedIn">
+                        <ul class="main-menu d-flex justify-content-between align-items-center">
+                            <li>
+                                <a href="{% url 'mainapp:main' %}">Foundation</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'events:main_view' %}">Events</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'apply:apply_view' %}">Apply</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'about:about_main' %}">About</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'shop:list' %}">Shop</a>
+                            </li>
+                            <li class="menu-active">
+                                <a href="{% url 'contacts:contacts_view' %}">Contacts</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+{%endblock%}
+{% block page_content%}
+<section id="contacts">
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-lg-5 wow fadeInLeftBig">
+                <h2 class="contacts__title">
+                    Contacts
+                </h2>
+                {% for com  in company_contacts %}
+                    
+                <div class="contacts__item">
+                    <div class="d-flex align-items-center">
+                        <span>Address:</span>
+                        <p>{{com.address}}</p>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <span>Email: </span>
+                        <p>{{com.email}}</p>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <span>Phone: </span>
+                        <p>{{com.phone}}</p>
+                    </div>
+                </div>
+                {% endfor %}
+
+                {% for person in persons_contacts%}
+                    <div class="contacts__item">
+                        <div class="d-flex align-items-center">
+                            <span>{{person.name}}</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <span>Email: </span>
+                            <p>{{person.email}}</p>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <span>Phone: </span>
+                            <p>{{person.phone}}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="col-lg-4 wow fadeInRightBig">
+                <h2 class="contacts__title">
+                    Do you have any questions?
+                </h2>
+                <form class="questions-form" method="POST">
+                    {% csrf_token %}
+                    {% for field in form%}
+                        {{field}}
+                    {% endfor %}
+                    <!--<input class="input-style" type="text" placeholder="Name">
+                    <input class="input-style" type="email" placeholder="E-mail">
+                    <textarea class="input-style"  name="question" rows="10" placeholder="Your question"></textarea> -->
+                    <button id="send-question">
+                        Send
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="row wow fadeInDownBig">
+            <div class="col">
+                <h2 class="contacts__title">
+                    You can donate If you want
+                </h2>
+            </div>
+        </div>
+        <div class="row wow fadeInDownBig">
+            <div class="col">
+                <span class="requisites-bold">
+                    Bank accounts
+                </span>
+            </div>
+        </div>
+        <div class="row wow fadeInDownBig">
+            {% for bank in bank_data%}
+                <div class="col-lg-4 col-md-6">
+                    <div class="requisites-unicredit requisites">
+                        <span class="requisites-bold">In {{bank.currency}}</span>
+                        <span class="requisites-bold">{{bank.name}}</span>
+                        <p>BIC: {{bank.bic}}</p>
+                        <p>BAN: {{bank.ban}}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}
