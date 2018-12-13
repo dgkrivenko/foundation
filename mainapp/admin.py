@@ -5,9 +5,9 @@ from mainapp.models import Banner
 
 MAX_BANNER_NUM = 3
 
+
 @admin.register(Banner)
 class BannerAdmin(admin.ModelAdmin):
-
     list_display = ['banner_title', 'banner_date']
 
     def has_add_permission(self, request):
@@ -17,9 +17,9 @@ class BannerAdmin(admin.ModelAdmin):
         else:
             return True
 
+
 @admin.register(Story)
 class BannerAdmin(admin.ModelAdmin):
-    
     list_display = ['title', 'published_on']
 
     def has_add_permission(self, request):

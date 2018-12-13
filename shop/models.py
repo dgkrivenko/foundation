@@ -1,7 +1,7 @@
 from django.db import models
 
-class Product(models.Model):
 
+class Product(models.Model):
     product_name = models.CharField(verbose_name="Product name", max_length=100)
     short_description = models.TextField(verbose_name="Short short_description")
     long_description = models.TextField(verbose_name="Long description")
@@ -11,8 +11,8 @@ class Product(models.Model):
     def __str__(self):
         return ' - '.join((self.product_name, str(self.price)))
 
-class Order(models.Model):
 
+class Order(models.Model):
     product_name = models.CharField(verbose_name="Product name", max_length=100)
     product_id = models.CharField(verbose_name="Product ID", max_length=100)
     user_name = models.CharField(verbose_name="User name", max_length=100)
@@ -24,4 +24,3 @@ class Order(models.Model):
 
     def __str__(self):
         return ' - '.join((self.user_name, str(self.created_at.strftime("%Y-%m-%d %H:%M:%S"))))
-   

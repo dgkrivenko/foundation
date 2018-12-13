@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Founder(models.Model):
 
     class Meta:
@@ -12,8 +13,8 @@ class Founder(models.Model):
     img = models.ImageField(verbose_name="Image", upload_to='about_img', blank=True)
 
     def __str__(self):
-
         return self.name
+
 
 class Foundation(models.Model):
 
@@ -25,8 +26,8 @@ class Foundation(models.Model):
     detail_page_title = models.CharField(verbose_name='Detail page title', max_length=100)
 
     def __str__(self):
-
         return 'Foundation'
+
 
 class Directors(models.Model):
     
@@ -41,5 +42,4 @@ class Directors(models.Model):
     detail_page_title = models.CharField(verbose_name='Detail page title', max_length=100)
 
     def __str__(self):
-
         return self.name

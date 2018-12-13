@@ -1,11 +1,10 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator
-from django.shortcuts import render_to_response
-from django.http import HttpResponse
 from django.views import View
 
 from mainapp.models import Story
 from mainapp.models import Banner
+
 
 class NewsView(View):
 
@@ -17,7 +16,6 @@ class NewsView(View):
     list_template_name = 'mainapp/news.html'
     page_template_name = 'mainapp/index.html'
 
-
     def get_news_list(self, page_num):
         all_news = list(Story.objects.all())
         paginator = Paginator(all_news, self.paginate_by)
@@ -25,7 +23,6 @@ class NewsView(View):
         return paginator.page(page_num).object_list
     
     def get(self, request):
-
         if self.ajax_parametr in request.GET:
             self.content['news_list']= self.get_news_list(int(request.GET.get('page')))
             self.content['is_show_more'] = self.is_show_more

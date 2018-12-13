@@ -1,10 +1,10 @@
 from django import forms
 from . import models 
-    
+
+
 class OrderForm(forms.ModelForm):
 
     class Meta:
-
         model = models.Order
         fields = ['product_name', 'product_id', 'user_name', 'user_email', 'user_phone', 'user_address', 'user_add_info']
         widgets = {

@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Prize(models.Model):
 
     class Meta:
@@ -15,6 +16,7 @@ class Prize(models.Model):
     def __str__(self):
         return self.type_of_contest
 
+
 class Files(models.Model):
 
     class Meta:
@@ -23,9 +25,10 @@ class Files(models.Model):
     filename = models.CharField(verbose_name="File name", max_length=100)
     docs = models.FileField(upload_to='docs/')
     prize = models.ForeignKey('Prize', on_delete=models.CASCADE)
-    def __str__(self):
 
+    def __str__(self):
         return self.filename
+
 
 class Participant(models.Model):
 
@@ -50,10 +53,12 @@ class Sport(Participant):
     class Meta:
         verbose_name_plural = "Sport"
 
+
 class Science(Participant):
 
     class Meta:
         verbose_name_plural = "Science"
+
 
 class Art(Participant):
     

@@ -10,8 +10,8 @@ from django.core.mail import mail_admins
 from shop.models import Product
 from . import forms
 
-class ProductListView(View):
 
+class ProductListView(View):
     page_template_name = 'shop/shop.html'
     list_template_name = 'shop/shop_list.html'
     ajax_parametr = 'page'
@@ -21,14 +21,12 @@ class ProductListView(View):
     start_page_num = 1
 
     def get_product_list(self, page_num):
-
         all_products = list(Product.objects.all())
         paginator = Paginator(all_products, self.paginate_by)
         self.is_show_more = False if page_num >= paginator.num_pages else True
         return paginator.page(page_num).object_list
 
     def get(self, request):
-
         if self.ajax_parametr in request.GET:
             print(request.GET)
             self.content['prod_list']= self.get_product_list(int(request.GET.get('page')))
@@ -41,9 +39,7 @@ class ProductListView(View):
             return render(request, self.page_template_name, self.content)
 
 
-
 class ProductDetailView(DetailView):
-
     model = Product
     template_name = 'shop/detail.html'
     context_object_name = 'content'
@@ -56,26 +52,22 @@ class ProductDetailView(DetailView):
         context['form'] = form 
         return context
 
-    def post(self, request, **kwargs):
-
+    def post(self, request):
         success = reverse_lazy('shop:success')
         form = forms.OrderForm(request.POST)
         if form.is_valid():
             form.save()
-            print('*'*100)
-            print(form)
             send_message(form)
             return redirect(success)
 
+
 def oreder_success(request):
-    
     return render(request, 'shop/success.html')
 
-def send_message(form):
 
+def send_message(form):
     subject = 'Subject'
     html_message = render_to_string('shop/mail_template.html', {'context': form})
     plain_message = strip_tags(html_message)
     from_email = 'From <from@example.com>'
-
     mail_admins(subject, plain_message, from_email, html_message=html_message)

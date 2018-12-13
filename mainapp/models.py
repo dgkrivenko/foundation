@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Story(models.Model):
 
     class Meta:
@@ -12,6 +13,7 @@ class Story(models.Model):
 
     def __str__(self):
         return ' - '.join((self.title, str(self.published_on)))
+
 
 class Banner(models.Model):
 
