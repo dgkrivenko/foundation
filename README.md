@@ -1,2 +1,2 @@
 # Foundation
-link: http://foundation.dk-developer.ru
+link: http://enchokeryazov.org
